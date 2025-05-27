@@ -86,6 +86,20 @@ input[type="datetime-local"] {
       background: #f9f9f9;
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr">document.addEventListener("DOMContentLoaded", function () {
+  flatpickr("input[type='date'], input[type='datetime-local']", {
+    dateFormat: "Y-m-d",
+    enableTime: false,
+    locale: "ko" // 한국어 설정 필요시
+  });
+
+  flatpickr("input[type='datetime-local']", {
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    locale: "ko"
+  });
+});</script>
 </head>
 <body>
   <header>LA CUCARACHA</header>
