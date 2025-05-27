@@ -175,17 +175,17 @@
 
   <script>
     const languages = [
-      {name: "한국어", class: "green"},
-      {name: "English", class: "red"},
-      {name: "中文", class: "orange"},
-      {name: "日本語", class: "green"},
-      {name: "Tiếng Việt", class: "red"},
-      {name: "ภาษาไทย", class: "orange"},
-      {name: "Oʻzbekcha", class: "green"},
-      {name: "ភាសាខ្មែរ", class: "red"},
-      {name: "Filipino", class: "orange"},
-      {name: "Bahasa Indonesia", class: "green"},
-      {name: "नेपाली", class: "red"},
+      {name: "한국어", class: "red"},
+      {name: "English", class: "orange"},
+      {name: "中文", class: "green"},
+      {name: "日本語", class: "red"},
+      {name: "Tiếng Việt", class: "orange"},
+      {name: "ภาษาไทย", class: "green"},
+      {name: "Oʻzbekcha", class: "red"},
+      {name: "ភាសាខ្មែរ", class: "orange"},
+      {name: "Filipino", class: "green"},
+      {name: "Bahasa Indonesia", class: "red"},
+      {name: "नेपाली", class: "orange"},
     ];
     const langButtonsContainer = document.getElementById("langButtons");
     languages.forEach(lang => {
