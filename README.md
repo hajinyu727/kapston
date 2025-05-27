@@ -4,79 +4,107 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LA CUCARACHA</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #fff;
-      color: #333;
-      overflow-x: hidden;
-    }
-    header {
-      background: linear-gradient(to right, red, orange, green);
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+ <style>
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #fff;
+    color: #333;
+    overflow-x: hidden;
+  }
+  header {
+    background: linear-gradient(to right, red, orange, green);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .container {
+    padding: 1.5rem;
+    text-align: center;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .btn {
+    display: block;
+    margin: 0.5rem auto;
+    padding: 1rem;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.2s;
+    box-sizing: border-box;
+  }
+  .btn:hover {
+    transform: scale(1.05);
+  }
+  .btn.red { background-color: #d32f2f; }
+  .btn.orange { background-color: #f57c00; }
+  .btn.green { background-color: #388e3c; }
+  .hidden { display: none; }
+  .back {
+    margin-top: 1rem;
+    background: #ccc;
+    color: #000;
+  }
+  input, select {
+    margin: 0.5rem auto;
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1rem;
+    display: block;
+    box-sizing: border-box;
+  }
+  input[type="date"],
+  input[type="datetime-local"] {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  .currency-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 1rem 0;
+  }
+  .currency-icons div {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 70px;
+    font-size: 0.9rem;
+    background: #f9f9f9;
+  }
+
+  /* 📱 모바일 최적화 */
+  @media (max-width: 480px) {
     .container {
-      padding: 1.5rem;
-      text-align: center;
-      max-width: 100%;
-      box-sizing: border-box;
-    }
-    .btn {
-      display: block;
-      margin: 0.5rem auto;
       padding: 1rem;
-      font-size: 1rem;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 90%;
-      max-width: 300px;
-      transition: transform 0.2s;
-      box-sizing: border-box;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-    }
-    .btn.red { background-color: #d32f2f; }
-    .btn.orange { background-color: #f57c00; }
-    .btn.green { background-color: #388e3c; }
-    .hidden { display: none; }
-    .back {
-      margin-top: 1rem;
-      background: #ccc;
-      color: #000;
     }
     input, select {
-      margin: 0.5rem auto;
-      padding: 0.75rem;
-      width: 90%;
-      max-width: 400px;
+      font-size: 1.1rem;
+      padding: 1rem;
+    }
+    .btn {
+      font-size: 1.1rem;
+      padding: 1.2rem;
+      max-width: 100%;
+    }
+    .btn.back {
       font-size: 1rem;
-      display: block;
-      box-sizing: border-box;
+      padding: 1rem;
     }
-    .currency-icons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 1rem 0;
+    .container h2 {
+      font-size: 1.25rem;
     }
-    .currency-icons div {
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      width: 70px;
-      font-size: 0.9rem;
-      background: #f9f9f9;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
   <header>LA CUCARACHA</header>
