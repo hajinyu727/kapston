@@ -175,6 +175,7 @@
 
   <script>
     const languages = [
+      {name: "한국어", class: "red"},
       {name: "English", class: "red"},
       {name: "中文", class: "orange"},
       {name: "日本語", class: "green"},
@@ -227,3 +228,4 @@
     }
   </script>
 </body>
+</html>
