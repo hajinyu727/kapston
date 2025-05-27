@@ -51,6 +51,10 @@
       padding: 0.5rem;
       width: 80%;
       max-width: 400px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
     }
     label {
       display: block;
@@ -62,6 +66,15 @@
       -webkit-appearance: none;
       appearance: none;
       cursor: pointer;
+      
+      /* 모바일에서 크기 조정 */
+      font-size: 1.2rem;
+      padding: 0.8rem 1rem;
+      height: 3.2rem;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 8px;
+      border: 1px solid #999;
     }
     .currency-icons {
       display: flex;
@@ -75,6 +88,20 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       width: 80px;
+    }
+
+    /* 모바일 대응 폰트 및 버튼 크기 추가 (optional) */
+    @media (max-width: 480px) {
+      .btn {
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+      }
+      input, select {
+        width: 95%;
+        font-size: 1.1rem;
+        padding: 0.8rem 1rem;
+        height: 3.2rem;
+      }
     }
   </style>
 </head>
@@ -171,21 +198,19 @@
     <button class="btn back" onclick="goBack('service')">🔙 뒤로가기</button>
   </div>
 
-  <!-- 이하 동일하게 유지 (등록/포인트/분실/가이드 등 페이지는 input 변경 사항 없음) -->
-
   <script>
     const languages = [
       {name: "한국어", class: "red"},
-      {name: "English", class: "orange"},
-      {name: "中文", class: "green"},
-      {name: "日本語", class: "red"},
-      {name: "Tiếng Việt", class: "orange"},
-      {name: "ภาษาไทย", class: "green"},
-      {name: "Oʻzbekcha", class: "red"},
-      {name: "ភាសាខ្មែរ", class: "orange"},
-      {name: "Filipino", class: "green"},
-      {name: "Bahasa Indonesia", class: "red"},
-      {name: "नेपाली", class: "orange"},
+      {name: "English", class: "red"},
+      {name: "中文", class: "orange"},
+      {name: "日本語", class: "green"},
+      {name: "Tiếng Việt", class: "red"},
+      {name: "ภาษาไทย", class: "orange"},
+      {name: "Oʻzbekcha", class: "green"},
+      {name: "ភាសាខ្មែរ", class: "red"},
+      {name: "Filipino", class: "orange"},
+      {name: "Bahasa Indonesia", class: "green"},
+      {name: "नेपाली", class: "red"},
     ];
     const langButtonsContainer = document.getElementById("langButtons");
     languages.forEach(lang => {
