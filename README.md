@@ -10,6 +10,7 @@
       font-family: sans-serif;
       background: #fff;
       color: #333;
+      overflow-x: hidden;
     }
     header {
       background: linear-gradient(to right, red, orange, green);
@@ -20,19 +21,24 @@
       font-weight: bold;
     }
     .container {
-      padding: 2rem;
+      padding: 1.5rem;
       text-align: center;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .btn {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 1rem 2rem;
+      display: block;
+      margin: 0.5rem auto;
+      padding: 1rem;
       font-size: 1rem;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      width: 90%;
+      max-width: 300px;
       transition: transform 0.2s;
+      box-sizing: border-box;
     }
     .btn:hover {
       transform: scale(1.05);
@@ -42,15 +48,18 @@
     .btn.green { background-color: #388e3c; }
     .hidden { display: none; }
     .back {
-      margin-top: 2rem;
+      margin-top: 1rem;
       background: #ccc;
       color: #000;
     }
     input, select {
-      margin: 0.5rem;
-      padding: 0.5rem;
-      width: 80%;
+      margin: 0.5rem auto;
+      padding: 0.75rem;
+      width: 90%;
       max-width: 400px;
+      font-size: 1rem;
+      display: block;
+      box-sizing: border-box;
     }
     .currency-icons {
       display: flex;
@@ -60,10 +69,12 @@
       margin: 1rem 0;
     }
     .currency-icons div {
-      padding: 1rem;
+      padding: 0.75rem;
       border: 1px solid #ccc;
       border-radius: 8px;
-      width: 80px;
+      width: 70px;
+      font-size: 0.9rem;
+      background: #f9f9f9;
     }
   </style>
 </head>
@@ -114,6 +125,7 @@
     <button class="btn">예약하기</button>
     <button class="btn back" onclick="goBack('transport')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-plane" class="container hidden">
     <h2>✈ 비행기 예약</h2>
     <input placeholder="출발 공항" />
@@ -122,6 +134,7 @@
     <button class="btn">예약하기</button>
     <button class="btn back" onclick="goBack('transport')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-taxi" class="container hidden">
     <h2>🚕 택시 예약</h2>
     <input placeholder="픽업 위치" />
@@ -130,6 +143,7 @@
     <button class="btn">예약하기</button>
     <button class="btn back" onclick="goBack('transport')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-ktx" class="container hidden">
     <h2>🚄 KTX 예약</h2>
     <input placeholder="출발역" />
@@ -154,6 +168,7 @@
     <button class="btn orange" onclick="goToPage('racha-register')">카드를 등록하시겠습니까?</button>
     <button class="btn back" onclick="goBack('racha')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-racha-apply" class="container hidden">
     <h2>카드 신청</h2>
     <input placeholder="이름" />
@@ -162,6 +177,7 @@
     <button class="btn red">신청하기</button>
     <button class="btn back" onclick="goBack('racha-join')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-racha-register" class="container hidden">
     <h2>카드 등록</h2>
     <input placeholder="이름" />
@@ -173,6 +189,7 @@
     <button class="btn orange">등록하기</button>
     <button class="btn back" onclick="goBack('racha-join')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-racha-point" class="container hidden">
     <h2>포인트 조회</h2>
     <input placeholder="카드 번호 입력" />
@@ -180,11 +197,13 @@
     <p>현재 포인트: 3,500P</p>
     <button class="btn back" onclick="goBack('racha')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-racha-lost" class="container hidden">
     <h2>카드 분실 안내</h2>
     <p>카드 분실 시 고객센터로 즉시 연락해주세요.<br>전화: 1234-5678 / 이메일: help@lacucaracha.com</p>
     <button class="btn back" onclick="goBack('racha')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-racha-guide" class="container hidden">
     <h2>자주 묻는 질문 (Q&A)</h2>
     <p><strong>Q. 당일 예매도 가능한가요?</strong><br>A. 1일 뒤 출발부터 최대 한 달 이내까지 가능해요.</p>
@@ -216,7 +235,7 @@
     languages.forEach(lang => {
       const btn = document.createElement("button");
       btn.textContent = lang.name;
-      btn.className = `btn ${lang.class}`;
+      btn.className = "btn " + lang.class;
       btn.onclick = () => goToPage("service");
       langButtonsContainer.appendChild(btn);
     });
@@ -225,7 +244,7 @@
       document.querySelectorAll(".container").forEach(div => {
         div.classList.add("hidden");
       });
-      const page = document.getElementById(`page-${pageId}`);
+      const page = document.getElementById("page-" + pageId);
       if (page) page.classList.remove("hidden");
       window.scrollTo(0, 0);
     }
@@ -233,7 +252,7 @@
     function goBack(fromPage) {
       const map = {
         language: "language",
-        service: "service",
+        service: "language",
         exchange: "service",
         transport: "service",
         racha: "service",
