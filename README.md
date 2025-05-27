@@ -10,6 +10,7 @@
       font-family: sans-serif;
       background: #fff;
       color: #333;
+      overflow-x: hidden;
     }
     header {
       background: linear-gradient(to right, red, orange, green);
@@ -20,19 +21,24 @@
       font-weight: bold;
     }
     .container {
-      padding: 2rem;
+      padding: 1.5rem;
       text-align: center;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .btn {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 1rem 2rem;
+      display: block;
+      margin: 0.5rem auto;
+      padding: 1rem;
       font-size: 1rem;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      width: 90%;
+      max-width: 300px;
       transition: transform 0.2s;
+      box-sizing: border-box;
     }
     .btn:hover {
       transform: scale(1.05);
@@ -42,39 +48,18 @@
     .btn.green { background-color: #388e3c; }
     .hidden { display: none; }
     .back {
-      margin-top: 2rem;
+      margin-top: 1rem;
       background: #ccc;
       color: #000;
     }
     input, select {
-      margin: 0.5rem;
-      padding: 0.5rem;
-      width: 80%;
-      max-width: 400px;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-    input[type="date"],
-    input[type="datetime-local"] {
-      -webkit-appearance: none;
-      appearance: none;
-      cursor: pointer;
-      
-      /* 모바일에서 크기 조정 */
-      font-size: 1.2rem;
-      padding: 0.8rem 1rem;
-      height: 3.2rem;
+      margin: 0.5rem auto;
+      padding: 0.75rem;
       width: 90%;
       max-width: 400px;
-      border-radius: 8px;
-      border: 1px solid #999;
+      font-size: 1rem;
+      display: block;
+      box-sizing: border-box;
     }
     .currency-icons {
       display: flex;
@@ -84,24 +69,12 @@
       margin: 1rem 0;
     }
     .currency-icons div {
-      padding: 1rem;
+      padding: 0.75rem;
       border: 1px solid #ccc;
       border-radius: 8px;
-      width: 80px;
-    }
-
-    /* 모바일 대응 폰트 및 버튼 크기 추가 (optional) */
-    @media (max-width: 480px) {
-      .btn {
-        padding: 1rem 1.5rem;
-        font-size: 1.1rem;
-      }
-      input, select {
-        width: 95%;
-        font-size: 1.1rem;
-        padding: 0.8rem 1rem;
-        height: 3.2rem;
-      }
+      width: 70px;
+      font-size: 0.9rem;
+      background: #f9f9f9;
     }
   </style>
 </head>
@@ -146,44 +119,35 @@
 
   <div id="page-bus" class="container hidden">
     <h2>🚌 버스 예약</h2>
-    <label>출발지</label>
     <input placeholder="출발지" />
-    <label>도착지</label>
     <input placeholder="도착지" />
-    <label>날짜</label>
     <input type="date" />
     <button class="btn">예약하기</button>
     <button class="btn back" onclick="goBack('transport')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-plane" class="container hidden">
     <h2>✈ 비행기 예약</h2>
-    <label>출발 공항</label>
     <input placeholder="출발 공항" />
-    <label>도착 공항</label>
     <input placeholder="도착 공항" />
-    <label>날짜</label>
     <input type="date" />
     <button class="btn">예약하기</button>
     <button class="btn back" onclick="goBack('transport')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-taxi" class="container hidden">
     <h2>🚕 택시 예약</h2>
-    <label>픽업 위치</label>
     <input placeholder="픽업 위치" />
-    <label>도착 위치</label>
     <input placeholder="도착 위치" />
-    <label>날짜 및 시간</label>
     <input type="datetime-local" />
     <button class="btn">예약하기</button>
     <button class="btn back" onclick="goBack('transport')">🔙 뒤로가기</button>
   </div>
+
   <div id="page-ktx" class="container hidden">
     <h2>🚄 KTX 예약</h2>
-    <label>출발역</label>
     <input placeholder="출발역" />
-    <label>도착역</label>
     <input placeholder="도착역" />
-    <label>날짜</label>
     <input type="date" />
     <button class="btn">예약하기</button>
     <button class="btn back" onclick="goBack('transport')">🔙 뒤로가기</button>
@@ -198,25 +162,81 @@
     <button class="btn back" onclick="goBack('service')">🔙 뒤로가기</button>
   </div>
 
+  <div id="page-racha-join" class="container hidden">
+    <h2>라차카드 가입/등록</h2>
+    <button class="btn red" onclick="goToPage('racha-apply')">카드를 신청하시겠습니까?</button>
+    <button class="btn orange" onclick="goToPage('racha-register')">카드를 등록하시겠습니까?</button>
+    <button class="btn back" onclick="goBack('racha')">🔙 뒤로가기</button>
+  </div>
+
+  <div id="page-racha-apply" class="container hidden">
+    <h2>카드 신청</h2>
+    <input placeholder="이름" />
+    <input placeholder="카드를 받을 주소" />
+    <input type="email" placeholder="이메일" />
+    <button class="btn red">신청하기</button>
+    <button class="btn back" onclick="goBack('racha-join')">🔙 뒤로가기</button>
+  </div>
+
+  <div id="page-racha-register" class="container hidden">
+    <h2>카드 등록</h2>
+    <input placeholder="이름" />
+    <input type="email" placeholder="이메일" />
+    <input placeholder="생년월일" />
+    <input placeholder="카드 포스틱 6자리 숫자" />
+    <input placeholder="카드 번호" />
+    <input placeholder="카드 결제일 (MM/YY)" />
+    <button class="btn orange">등록하기</button>
+    <button class="btn back" onclick="goBack('racha-join')">🔙 뒤로가기</button>
+  </div>
+
+  <div id="page-racha-point" class="container hidden">
+    <h2>포인트 조회</h2>
+    <input placeholder="카드 번호 입력" />
+    <button class="btn red">조회</button>
+    <p>현재 포인트: 3,500P</p>
+    <button class="btn back" onclick="goBack('racha')">🔙 뒤로가기</button>
+  </div>
+
+  <div id="page-racha-lost" class="container hidden">
+    <h2>카드 분실 안내</h2>
+    <p>카드 분실 시 고객센터로 즉시 연락해주세요.<br>전화: 1234-5678 / 이메일: help@lacucaracha.com</p>
+    <button class="btn back" onclick="goBack('racha')">🔙 뒤로가기</button>
+  </div>
+
+  <div id="page-racha-guide" class="container hidden">
+    <h2>자주 묻는 질문 (Q&A)</h2>
+    <p><strong>Q. 당일 예매도 가능한가요?</strong><br>A. 1일 뒤 출발부터 최대 한 달 이내까지 가능해요.</p>
+    <p><strong>Q. 청소년도 할인 가능한가요?</strong><br>A. 어른 요금만 할인이 가능해요.</p>
+    <p><strong>Q. 적립금은 언제 적립되나요?</strong><br>A. 기차 출발 다음날 적립되며 기간은 1년간 유효해요.</p>
+    <button class="btn back" onclick="goBack('racha')">🔙 뒤로가기</button>
+  </div>
+
+  <div id="page-support" class="container hidden">
+    <h2>상담원 연결 안내</h2>
+    <p>도움이 필요하신가요? 전화 또는 채팅으로 상담원을 만나보세요.</p>
+    <button class="btn back" onclick="goBack('service')">🔙 뒤로가기</button>
+  </div>
+
   <script>
     const languages = [
       {name: "한국어", class: "red"},
-      {name: "English", class: "red"},
-      {name: "中文", class: "orange"},
-      {name: "日本語", class: "green"},
-      {name: "Tiếng Việt", class: "red"},
-      {name: "ภาษาไทย", class: "orange"},
-      {name: "Oʻzbekcha", class: "green"},
-      {name: "ភាសាខ្មែរ", class: "red"},
-      {name: "Filipino", class: "orange"},
-      {name: "Bahasa Indonesia", class: "green"},
-      {name: "नेपाली", class: "red"},
+      {name: "English", class: "orange"},
+      {name: "中文", class: "green"},
+      {name: "日本語", class: "red"},
+      {name: "Tiếng Việt", class: "orange"},
+      {name: "ภาษาไทย", class: "green"},
+      {name: "Oʻzbekcha", class: "red"},
+      {name: "ភាសាខ្មែរ", class: "orange"},
+      {name: "Filipino", class: "green"},
+      {name: "Bahasa Indonesia", class: "red"},
+      {name: "नेपाली", class: "orange"},
     ];
     const langButtonsContainer = document.getElementById("langButtons");
     languages.forEach(lang => {
       const btn = document.createElement("button");
       btn.textContent = lang.name;
-      btn.className = `btn ${lang.class}`;
+      btn.className = "btn " + lang.class;
       btn.onclick = () => goToPage("service");
       langButtonsContainer.appendChild(btn);
     });
@@ -225,7 +245,7 @@
       document.querySelectorAll(".container").forEach(div => {
         div.classList.add("hidden");
       });
-      const page = document.getElementById(`page-${pageId}`);
+      const page = document.getElementById("page-" + pageId);
       if (page) page.classList.remove("hidden");
       window.scrollTo(0, 0);
     }
@@ -233,7 +253,7 @@
     function goBack(fromPage) {
       const map = {
         language: "language",
-        service: "service",
+        service: "language",
         exchange: "service",
         transport: "service",
         racha: "service",
